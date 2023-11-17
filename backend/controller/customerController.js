@@ -1,14 +1,15 @@
 const fetch = require('node-fetch')
 
+const token = "eyJraWQiOiJoYjhfdjVQVW1IQU02T1ZYRVhVMHdoSUZjdE4xT1BuU2ZWUm42UWhEZHFnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULnAwY1lBcmZVdS1OWWpVZ0lyM2dpLTltOVVkOHFaZFRXUTVhbWNJMklwUlkub2FyMTJ3ZjBqeDNJWWJuT0Y2OTciLCJpc3MiOiJodHRwczovL2lkZW50aXR5LmRhdGFzdGF4LmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE3MDAyMzA5MDYsImV4cCI6MTcwMDIzNDUwNiwiY2lkIjoiMG9hNHAzZXBubjlFZm14WGE2OTciLCJ1aWQiOiIwMHU3bHJ2MWphUTBJS2pISzY5NyIsInNjcCI6WyJvZmZsaW5lX2FjY2VzcyIsImVtYWlsIiwicHJvZmlsZSIsIm9wZW5pZCJdLCJhdXRoX3RpbWUiOjE3MDAyMzA5MDQsInN1YiI6Ijc4ODg2NTM1LTUyYzUtNDhmOS1hNjZhLTNlMjdkMjYxZTU5YiIsImVtYWlsIjoiYWJhdGltZWhpbkBnbWFpbC5jb20ifQ.dS97WkiLmTpzaVvX-_gVBHjmaSx2OpQhSpyIBXPvf8zuzMG12iQGhqxK5y0FI8fX1rKJAOe_DK5kuUoAg_nZhLN_RLsN4A8JHB1FkhTbv4DwRADjOAueaKFf5eTUPBOZWcfx4NfmticY2Yw0TEwDmEc7OSuhQ40yLVjR6fofpyvtAzut75dBvdX2B8DG_Nk3oDszjLQHQJ_iqdZFymycYlz6GDq_7YsOOqkZeuzd6E2CaFJxg7BWI95o3ROlphi-wXQj2CpvdeylcgGtxQNRX4x4SS-Y16qxFnnDxUkEuYMiB7aXXPaGXGGq20bIdjIir1YeuaiLa8ujJ5NiHUpJBQ"
+
 const getAllCustomers = (req, res) => {
   const url =
-    "https://f77172ab-7745-48ba-bd56-06d70556e5f4-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/document/collections/customers?page-size=19";
+    "https://f77172ab-7745-48ba-bd56-06d70556e5f4-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/document/collections/customers?page-size=15";
   const option = {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "X-Cassandra-Token":
-        "eyJraWQiOiJoYjhfdjVQVW1IQU02T1ZYRVhVMHdoSUZjdE4xT1BuU2ZWUm42UWhEZHFnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULlN1bmJoT0VBZGczbldyOGZQVzlUamRHQ0dlLXp0QzhSVXZDQ1kxNUhheEEub2FyMTF4ZnVkaUpObzVwdmQ2OTciLCJpc3MiOiJodHRwczovL2lkZW50aXR5LmRhdGFzdGF4LmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2OTk1MzUzNTAsImV4cCI6MTY5OTUzODk1MCwiY2lkIjoiMG9hNHAzZXBubjlFZm14WGE2OTciLCJ1aWQiOiIwMHU3bHJ2MWphUTBJS2pISzY5NyIsInNjcCI6WyJwcm9maWxlIiwib2ZmbGluZV9hY2Nlc3MiLCJvcGVuaWQiLCJlbWFpbCJdLCJhdXRoX3RpbWUiOjE2OTk1MzUzNDgsInN1YiI6Ijc4ODg2NTM1LTUyYzUtNDhmOS1hNjZhLTNlMjdkMjYxZTU5YiIsImVtYWlsIjoiYWJhdGltZWhpbkBnbWFpbC5jb20ifQ.veMOtEysN9FWHjA8JoIy4imKmwDqJMLGQL2c8iYvBLlLfG7d4T9rvBF-ea8p5bo7THFobaSvA2KAaEbaIx1hQ3ovqRHc2NpL1in162YT_0zibIxjTdC2BQL0zqwSF6bNI8hC8E3dI5P0HpP6-WClFHXK0n3cVzFTHGjfFHU1CXG5OUP9dzawiL8q7I1guhwftKWuniKNZYn_y7tsyIs9KQzsmv6Wejf3TNWU1zXn9lFrLiHFBiDAYP3hK73Z9-H7rezeqJt_z3-GPCHwik4kv0TGehuB1f5gifyQCQz84h7VmPS7jdOwgN24bf2dFfNctZhsDgINBPmBjhdYFYOJ-Q",
+      "X-Cassandra-Token": token,
     },
   };
   fetch(url, option)
@@ -17,38 +18,69 @@ const getAllCustomers = (req, res) => {
     .catch((err) => console.error(err));
 };
 
-const addCustomer= async (req, res) => {
-    const url =
-      "https://f77172ab-7745-48ba-bd56-06d70556e5f4-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/document/collections/customers";
-const data = req.body;
+
+const getSingleCustomer = async (req, res) => {
+  const { id } = req.params;
+  const url = `https://f77172ab-7745-48ba-bd56-06d70556e5f4-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/document/collections/customers/${id}`
+
+  const option = {
+    method: "GET",
+    headers: {
+      Accept: 'application/json',
+      'X-Cassandra-Token': token
+    }
+  }
+  fetch(url, option)
+    .then(response => response.json())
+    .then(data => res.json(data))
+    .catch(err => console.log("error " + err))
+};
 
 
-        const option = {
+const addCustomer = async (req, res) => {
+  const url =
+    "https://f77172ab-7745-48ba-bd56-06d70556e5f4-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/document/collections/customers";
+  const data = req.body;
+
+
+  const option = {
     method: "POST",
     headers: {
-        'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
       Accept: "application/json",
-      "X-Cassandra-Token":
-        "eyJraWQiOiJoYjhfdjVQVW1IQU02T1ZYRVhVMHdoSUZjdE4xT1BuU2ZWUm42UWhEZHFnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULlN1bmJoT0VBZGczbldyOGZQVzlUamRHQ0dlLXp0QzhSVXZDQ1kxNUhheEEub2FyMTF4ZnVkaUpObzVwdmQ2OTciLCJpc3MiOiJodHRwczovL2lkZW50aXR5LmRhdGFzdGF4LmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2OTk1MzUzNTAsImV4cCI6MTY5OTUzODk1MCwiY2lkIjoiMG9hNHAzZXBubjlFZm14WGE2OTciLCJ1aWQiOiIwMHU3bHJ2MWphUTBJS2pISzY5NyIsInNjcCI6WyJwcm9maWxlIiwib2ZmbGluZV9hY2Nlc3MiLCJvcGVuaWQiLCJlbWFpbCJdLCJhdXRoX3RpbWUiOjE2OTk1MzUzNDgsInN1YiI6Ijc4ODg2NTM1LTUyYzUtNDhmOS1hNjZhLTNlMjdkMjYxZTU5YiIsImVtYWlsIjoiYWJhdGltZWhpbkBnbWFpbC5jb20ifQ.veMOtEysN9FWHjA8JoIy4imKmwDqJMLGQL2c8iYvBLlLfG7d4T9rvBF-ea8p5bo7THFobaSvA2KAaEbaIx1hQ3ovqRHc2NpL1in162YT_0zibIxjTdC2BQL0zqwSF6bNI8hC8E3dI5P0HpP6-WClFHXK0n3cVzFTHGjfFHU1CXG5OUP9dzawiL8q7I1guhwftKWuniKNZYn_y7tsyIs9KQzsmv6Wejf3TNWU1zXn9lFrLiHFBiDAYP3hK73Z9-H7rezeqJt_z3-GPCHwik4kv0TGehuB1f5gifyQCQz84h7VmPS7jdOwgN24bf2dFfNctZhsDgINBPmBjhdYFYOJ-Q",
+      "X-Cassandra-Token": token,
     },
     body: JSON.stringify(data),
-}
-try{
+  }
+  try {
     const data = await fetch(url, option)
     const result = await data.json()
     console.log(result)
 
-}catch(err){
-        console.log(err)
+  } catch (err) {
+    console.log(err)
     res.status(500).json("error " + err)
+  }
+
 }
 
-// .then(response => response.json())
-// .then(result => res.json(result))
-// .catch(err =>{ 
-//     console.log(err)
-//     res.status(500).json("error " + err)
-// })
+
+const deleteCustomer = async(req, res)=>{
+  const { id } = req.params
+  const url = `https://f77172ab-7745-48ba-bd56-06d70556e5f4-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/document/collections/customers/${id}`
+  const option ={
+    method: "DELETE",
+    headers: {
+      Accept:'*/*',
+      'X-Cassandra-Token':token,
+    }
+  }
+
+  fetch(url, option)
+  .then(response=>response.json())
+  .then(data=>res.json({meassage:"Item delete succesfully"}))
+  .catch(err=>console.log(err))
+
 }
 
 
@@ -56,12 +88,11 @@ try{
 module.exports = {
   getAllCustomers,
   addCustomer,
+  getSingleCustomer,
+  deleteCustomer
 };
 
 
 
 
-// curl -X 'GET' \
-//   'https://f77172ab-7745-48ba-bd56-06d70556e5f4-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/document/collections/customers?page-size=19' \
-//   -H 'accept: application/json' \
-//   -H 'X-Cassandra-Token: eyJraWQiOiJoYjhfdjVQVW1IQU02T1ZYRVhVMHdoSUZjdE4xT1BuU2ZWUm42UWhEZHFnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULlN1bmJoT0VBZGczbldyOGZQVzlUamRHQ0dlLXp0QzhSVXZDQ1kxNUhheEEub2FyMTF4ZnVkaUpObzVwdmQ2OTciLCJpc3MiOiJodHRwczovL2lkZW50aXR5LmRhdGFzdGF4LmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2OTk1MzUzNTAsImV4cCI6MTY5OTUzODk1MCwiY2lkIjoiMG9hNHAzZXBubjlFZm14WGE2OTciLCJ1aWQiOiIwMHU3bHJ2MWphUTBJS2pISzY5NyIsInNjcCI6WyJwcm9maWxlIiwib2ZmbGluZV9hY2Nlc3MiLCJvcGVuaWQiLCJlbWFpbCJdLCJhdXRoX3RpbWUiOjE2OTk1MzUzNDgsInN1YiI6Ijc4ODg2NTM1LTUyYzUtNDhmOS1hNjZhLTNlMjdkMjYxZTU5YiIsImVtYWlsIjoiYWJhdGltZWhpbkBnbWFpbC5jb20ifQ.veMOtEysN9FWHjA8JoIy4imKmwDqJMLGQL2c8iYvBLlLfG7d4T9rvBF-ea8p5bo7THFobaSvA2KAaEbaIx1hQ3ovqRHc2NpL1in162YT_0zibIxjTdC2BQL0zqwSF6bNI8hC8E3dI5P0HpP6-WClFHXK0n3cVzFTHGjfFHU1CXG5OUP9dzawiL8q7I1guhwftKWuniKNZYn_y7tsyIs9KQzsmv6Wejf3TNWU1zXn9lFrLiHFBiDAYP3hK73Z9-H7rezeqJt_z3-GPCHwik4kv0TGehuB1f5gifyQCQz84h7VmPS7jdOwgN24bf2dFfNctZhsDgINBPmBjhdYFYOJ-Q'
+
